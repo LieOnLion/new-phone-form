@@ -1,6 +1,11 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const NotFound = () => {
+    useEffect(() => {
+        document.title = "Page Not Found ¯\\_(ツ)_/¯"
+    }, []);
+
     return (
         <div className="not-found">
             <h2>Sorry</h2>

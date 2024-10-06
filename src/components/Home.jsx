@@ -2,10 +2,6 @@ import { useEffect, useState } from 'react';
 import CurrencyInput from './CurrencyInput';
 
 const Home = () => {
-    useEffect(() => {
-        document.title = "Create a New Form"
-    }, []);
-
     const [name, setName] = useState('');
     const [budget, setBudget] = useState('£0.00');
     const [currentPhone, setCurrentPhone] = useState('');
@@ -23,6 +19,10 @@ const Home = () => {
     const [cpuCores, setCpuCores] = useState('6-cores');
     const [ram, setRam] = useState('6gb');
     const [storage, setStorage] = useState('128gb');
+
+    useEffect(() => {
+        document.title = "Create a New Form"
+    }, []);
 
     const handleSubmit = (e) => {
         e.preventDefault();
