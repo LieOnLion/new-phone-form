@@ -9,7 +9,7 @@ function App() {
       <Navbar />
       <div className="content">
         <Routes>
-          <Route exact path="/" element={ <Home /> }></Route>
+          <Route exact path="/new-phone-form/" element={ <Home /> }></Route>
           <Route path="*" element={ <NotFound /> }></Route>
         </Routes>
       </div>
