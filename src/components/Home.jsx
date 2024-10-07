@@ -177,7 +177,7 @@ const Home = () => {
                 <button>Download "{name}.json"</button>
             </form>
 
-            <p>* Required<br />¹ Leave Blank to set as Current Phone<br />² The More/Higher/Ticked, the more Expensive</p>
+            <p>* Required<br />¹ Leave Blank to set as Current Phone<br />² Increased the Cost</p>
         </div>
     );
 };
