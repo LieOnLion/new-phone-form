@@ -4,7 +4,7 @@ import DropBox from './DropBox';
 
 const Home = () => {
     const [name, setName] = useState('');
-    const [budget, setBudget] = useState('£0.00');
+    const [budget, setBudget] = useState('0');
     const [currentPhone, setCurrentPhone] = useState('');
     const [trustedMaker, setTrustedMaker] = useState();
     const [preferredMake, setPreferredMake] = useState('');
@@ -143,8 +143,7 @@ const Home = () => {
                         <label>OLED Screen? *²</label>
                         <input
                             type="checkbox"
-                            required
-                            checked={ oled }
+                            checked={oled}
                             onChange={(e) => {
                                 console.log(e.target.required);
                                 setOled(e.target.checked);
