@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import CurrencyInput from './CurrencyInput';
-import DropBox from './DropBox';
+import DropdownBox from './DropdownBox';
+import Tooltip from './Tooltip';
 
 const Home = () => {
     const [name, setName] = useState('');
@@ -72,8 +73,10 @@ const Home = () => {
                         />
                     </div>
                     <div className="form-row">
-                        <label>Trusted Makers? (e.g. Samsung, Google, Sony) *</label>
-                        <DropBox 
+                        <label>Trusted Makers? * <Tooltip tooltip="e.g. Samsung, Google, Sony">
+                            <span class="material-symbols-outlined">info</span>
+                        </Tooltip></label>
+                        <DropdownBox 
                             options={[{value: "yes", title: "Yes"}, {value: "preferred", title: "Preferred"}, {value: "i-just-need-a-phone", title: "I Just Need A Phone"}]} 
                             value={trustedMaker} setValue={setTrustedMaker} required={true} 
                         />
@@ -96,7 +99,7 @@ const Home = () => {
                     </div>
                     <div className="form-row">
                         <label>Willing to try Android? *</label>
-                        <DropBox 
+                        <DropdownBox 
                             options={[{value: "preferred", title: "Preferred"}, {value: "yes", title: "Yes"}, {value: "im-an-idiot", title: "iPhone All the Way"}]} 
                             value={tryAndroid} setValue={setTryAndroid} required={true} 
                         />
@@ -106,7 +109,9 @@ const Home = () => {
                 <div className="form-sub">
                 <h3>Screen</h3>
                     <div className="form-row">
-                        <label>Screen Size? (in inches) ¹</label>
+                        <label>Screen Size? ¹ <Tooltip tooltip="Displayed in Inches">
+                            <span class="material-symbols-outlined">info</span>
+                        </Tooltip></label>
                         <input
                             type="text"
                             required
@@ -116,13 +121,15 @@ const Home = () => {
                     </div>
                     <div className="form-row">
                         <label>Screen Size Match Type? *</label>
-                        <DropBox 
+                        <DropdownBox 
                             options={[{value: "minimum", title: "Minimum"}, {value: "Exact", title: "Exact"}, {value: "Maximum", title: "Maximum"}]} 
                             value={screenSizeMatch} setValue={setScreenSizeMatch} required={true} 
                         />
                     </div>
                     <div className="form-row">
-                        <label>Screen Resolution? (e.g. 1080p or 1920x1080) ¹²</label>
+                        <label>Screen Resolution? ¹² <Tooltip tooltip="e.g. 1080p or 1920x1080">
+                            <span class="material-symbols-outlined">info</span>
+                        </Tooltip></label>
                         <input
                             type="text"
                             required
@@ -132,7 +139,7 @@ const Home = () => {
                     </div>
                     <div className="form-row">
                         <label>Screen Resolution Match Type? *</label>
-                        <DropBox 
+                        <DropdownBox 
                             options={[{value: "minimum", title: "Minimum"}, {value: "Exact", title: "Exact"}, {value: "Maximum", title: "Maximum"}]} 
                             value={screenResolutionMatch} setValue={setScreenResolutionMatch} required={true} 
                         />
@@ -151,14 +158,14 @@ const Home = () => {
                 <h3>Specs</h3>
                     <div className="form-row">
                         <label>CPU Core Count? *²</label>
-                        <DropBox 
+                        <DropdownBox 
                             options={[{value: "6", title: "6 Cores"}, {value: "8", title: "8 Cores"}, {value: "not-sure", title: "How Should I Know?"}]} 
                             value={cpuCores} setValue={setCpuCores} required={true} 
                         />
                     </div>
                     <div className="form-row">
                         <label>RAM Amount? *²</label>
-                        <DropBox 
+                        <DropdownBox 
                             options={[{value: "4gb", title: "4gb"}, {value: "6gb", title: "6gb"}, {value: "8gb", title: "8gb"}, 
                                 {value: "12gb", title: "12gb"}, {value: "16gb", title: "16gb"}, {value: "not-sure", title: "The What Now?"}]}
                             value={ram} setValue={setRam} required={true} 
@@ -166,7 +173,7 @@ const Home = () => {
                     </div>
                     <div className="form-row">
                         <label>Storage Space? *²</label>
-                        <DropBox 
+                        <DropdownBox 
                             options={[{value: "64gb", title: "64gb"}, {value: "128gb", title: "128gb"}, {value: "256gb", title: "256gb"}, 
                                 {value: "512gb", title: "512gb"}, {value: "not-sure", title: "The Huh?"}]}
                             value={storage} setValue={setStorage} required={true} 

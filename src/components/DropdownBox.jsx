@@ -1,4 +1,4 @@
-const DropBox = ({ options, value, setValue, required }) => {
+const DropdownBox = ({ options, value, setValue, required }) => {
     return (
         <select
             required={required}
@@ -13,4 +13,4 @@ const DropBox = ({ options, value, setValue, required }) => {
     );
 };
 
-export default DropBox;
+export default DropdownBox;

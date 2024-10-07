@@ -14,7 +14,7 @@ body {
   padding: 20px;
   display: flex;
   align-items: center;
-  max-width: 600px;
+  max-width: 1280px;
   margin: 0 auto;
   border-bottom: 1px solid #111;
   justify-content: space-between;
@@ -34,6 +34,24 @@ body {
   max-width: 600px;
   margin: 40px auto;
   padding: 20px;
+}
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+.tooltip {
+  position: absolute;
+  width: max-content;
+  min-width: 50px;
+  max-width: 200px;
+  padding: 6px 10px;
+  background-color: #222;
+  border: 1px solid #000;
+  border-radius: 5px;
+  z-index: 1;
+}
+.material-symbols-outlined {
+  font-size: 15px;
 }
 
 /* create new blog form */
@@ -64,8 +82,9 @@ body {
   width: 175px;
   padding: 6px 10px;
   margin: 10px 0;
-  border: 1px solid #000;
   background-color: #222;
+  border: 1px solid #000;
+  border-radius: 5px;
   box-sizing: border-box;
   display: block;
 }
