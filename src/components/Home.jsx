@@ -1,24 +1,25 @@
 import { useEffect, useState } from 'react';
 import CurrencyInput from './CurrencyInput';
+import DropBox from './DropBox';
 
 const Home = () => {
     const [name, setName] = useState('');
     const [budget, setBudget] = useState('£0.00');
     const [currentPhone, setCurrentPhone] = useState('');
-    const [trustedMaker, setTrustedMaker] = useState('yes');
+    const [trustedMaker, setTrustedMaker] = useState();
     const [preferredMake, setPreferredMake] = useState('');
     const [usedPhones, setUsedPhones] = useState(false);
-    const [tryAndroid, setTryAndroid] = useState('yes');
+    const [tryAndroid, setTryAndroid] = useState();
 
     const [screenSize, setScreenSize] = useState('');
-    const [screenSizeMatch, setScreenSizeMatch] = useState('minimum');
+    const [screenSizeMatch, setScreenSizeMatch] = useState();
     const [screenResolution, setScreenResolution] = useState('');
-    const [screenResolutionMatch, setScreenResolutionMatch] = useState('minimum');
+    const [screenResolutionMatch, setScreenResolutionMatch] = useState();
     const [oled, setOled] = useState(false);
     
-    const [cpuCores, setCpuCores] = useState('6-cores');
-    const [ram, setRam] = useState('6gb');
-    const [storage, setStorage] = useState('128gb');
+    const [cpuCores, setCpuCores] = useState();
+    const [ram, setRam] = useState();
+    const [storage, setStorage] = useState();
 
     useEffect(() => {
         document.title = "Create a New Form"
@@ -72,15 +73,10 @@ const Home = () => {
                     </div>
                     <div className="form-row">
                         <label>Trusted Makers? (e.g. Samsung, Google, Sony) *</label>
-                        <select 
-                            required
-                            value={ trustedMaker }
-                            onChange={(e) => setTrustedMaker(e.target.value)}
-                        >
-                            <option value="yes">Yes</option>
-                            <option value="preferred">Preferred</option>
-                            <option value="i-just-need-a-phone">I Just Need A Phone</option>
-                        </select>
+                        <DropBox 
+                            options={[{value: "yes", title: "Yes"}, {value: "preferred", title: "Preferred"}, {value: "i-just-need-a-phone", title: "I Just Need A Phone"}]} 
+                            value={trustedMaker} setValue={setTrustedMaker} required={true} 
+                        />
                     </div>
                     <div className="form-row">
                         <label>Preferred Make? ¹</label>
@@ -102,15 +98,10 @@ const Home = () => {
                     </div>
                     <div className="form-row">
                         <label>Willing to try Android? *</label>
-                        <select 
-                            required
-                            value={ tryAndroid }
-                            onChange={(e) => setTryAndroid(e.target.value)}
-                        >
-                            <option value="only-android">Only Android</option>
-                            <option value="yes">Yes</option>
-                            <option value="im-an-idiot">iPhone All the Way</option>
-                        </select>
+                        <DropBox 
+                            options={[{value: "preferred", title: "Preferred"}, {value: "yes", title: "Yes"}, {value: "im-an-idiot", title: "iPhone All the Way"}]} 
+                            value={tryAndroid} setValue={setTryAndroid} required={true} 
+                        />
                     </div>
                 </div>
 
@@ -127,15 +118,10 @@ const Home = () => {
                     </div>
                     <div className="form-row">
                         <label>Screen Size Match Type? *</label>
-                        <select
-                            required
-                            value={ screenSizeMatch }
-                            onChange={(e) => setScreenSizeMatch(e.target.value)}
-                        >
-                            <option value="minimum">Minimum</option>
-                            <option value="Exact">Exact</option>
-                            <option value="Maximum">Maximum</option>
-                        </select>
+                        <DropBox 
+                            options={[{value: "minimum", title: "Minimum"}, {value: "Exact", title: "Exact"}, {value: "Maximum", title: "Maximum"}]} 
+                            value={screenSizeMatch} setValue={setScreenSizeMatch} required={true} 
+                        />
                     </div>
                     <div className="form-row">
                         <label>Screen Resolution? (e.g. 1080p or 1920x1080) ¹²</label>
@@ -148,22 +134,19 @@ const Home = () => {
                     </div>
                     <div className="form-row">
                         <label>Screen Resolution Match Type? *</label>
-                        <select
-                            required
-                            value={ screenResolutionMatch }
-                            onChange={(e) => setScreenResolutionMatch(e.target.value)}
-                        >
-                            <option value="minimum">Minimum</option>
-                            <option value="Exact">Exact</option>
-                            <option value="Maximum">Maximum</option>
-                        </select>
+                        <DropBox 
+                            options={[{value: "minimum", title: "Minimum"}, {value: "Exact", title: "Exact"}, {value: "Maximum", title: "Maximum"}]} 
+                            value={screenResolutionMatch} setValue={setScreenResolutionMatch} required={true} 
+                        />
                     </div>
                     <div className="form-row">
                         <label>OLED Screen? *²</label>
                         <input
                             type="checkbox"
+                            required
                             checked={ oled }
                             onChange={(e) => {
+                                console.log(e.target.required);
                                 setOled(e.target.checked);
                             }}
                         />
@@ -174,44 +157,26 @@ const Home = () => {
                 <h3>Specs</h3>
                     <div className="form-row">
                         <label>CPU Core Count? *²</label>
-                        <select
-                            required
-                            value={ cpuCores }
-                            onChange={(e) => setCpuCores(e.target.value)}
-                        >
-                            <option value="6-cores">6 Cores</option>
-                            <option value="8-cores">8 Cores</option>
-                            <option value="whatever-i-want">How Should I Know?</option>
-                        </select>
+                        <DropBox 
+                            options={[{value: "6", title: "6 Cores"}, {value: "8", title: "8 Cores"}, {value: "not-sure", title: "How Should I Know?"}]} 
+                            value={cpuCores} setValue={setCpuCores} required={true} 
+                        />
                     </div>
                     <div className="form-row">
                         <label>RAM Amount? *²</label>
-                        <select 
-                            required
-                            value={ ram }
-                            onChange={(e) => setRam(e.target.value)}
-                        >
-                            <option value="4gb">4gb</option>
-                            <option value="6gb">6gb</option>
-                            <option value="8gb">8gb</option>
-                            <option value="12gb">12gb</option>
-                            <option value="16gb">16gb</option>
-                            <option value="whatever-i-want">The What Now?</option>
-                        </select>
+                        <DropBox 
+                            options={[{value: "4gb", title: "4gb"}, {value: "6gb", title: "6gb"}, {value: "8gb", title: "8gb"}, 
+                                {value: "12gb", title: "12gb"}, {value: "16gb", title: "16gb"}, {value: "not-sure", title: "The What Now?"}]}
+                            value={ram} setValue={setRam} required={true} 
+                        />
                     </div>
                     <div className="form-row">
-                        <label>RAM Amount? *²</label>
-                        <select 
-                            required
-                            value={ storage }
-                            onChange={(e) => setStorage(e.target.value)}
-                        >
-                            <option value="64gb">64gb</option>
-                            <option value="128gb">128gb</option>
-                            <option value="256gb">256gb</option>
-                            <option value="512gb">512gb</option>
-                            <option value="whatever-i-want">The Huh?</option>
-                        </select>
+                        <label>Storage Space? *²</label>
+                        <DropBox 
+                            options={[{value: "64gb", title: "64gb"}, {value: "128gb", title: "128gb"}, {value: "256gb", title: "256gb"}, 
+                                {value: "512gb", title: "512gb"}, {value: "not-sure", title: "The Huh?"}]}
+                            value={storage} setValue={setStorage} required={true} 
+                        />
                     </div>
                 </div>
 
