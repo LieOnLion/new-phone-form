@@ -91,9 +91,7 @@ const Home = () => {
                         <input
                             type="checkbox"
                             checked={ usedPhones }
-                            onChange={(e) => {
-                                setUsedPhones(e.target.checked);
-                            }}
+                            onChange={(e) => setUsedPhones(e.target.checked)}
                         />
                     </div>
                     <div className="form-row">
@@ -144,10 +142,7 @@ const Home = () => {
                         <input
                             type="checkbox"
                             checked={oled}
-                            onChange={(e) => {
-                                console.log(e.target.required);
-                                setOled(e.target.checked);
-                            }}
+                            onChange={(e) => console.log(e.target.required)}
                         />
                     </div>
                 </div>
@@ -179,7 +174,7 @@ const Home = () => {
                     </div>
                 </div>
 
-                <button>Download "{ name }.json"</button>
+                <button>Download "{name}.json"</button>
             </form>
 
             <p>* Required<br />¹ Leave Blank to set as Current Phone<br />² The More/Higher/Ticked, the more Expensive</p>
