@@ -142,7 +142,7 @@ const Home = () => {
                         <input
                             type="checkbox"
                             checked={oled}
-                            onChange={(e) => console.log(e.target.required)}
+                            onChange={(e) => setOled(e.target.checked)}
                         />
                     </div>
                 </div>
