@@ -13,9 +13,7 @@ const Home = () => {
     const [tryAndroid, setTryAndroid] = useState();
 
     const [screenSize, setScreenSize] = useState('');
-    const [screenSizeMatch, setScreenSizeMatch] = useState();
     const [screenResolution, setScreenResolution] = useState('');
-    const [screenResolutionMatch, setScreenResolutionMatch] = useState();
     const [oled, setOled] = useState(false);
     
     const [cpuCores, setCpuCores] = useState();
@@ -30,7 +28,7 @@ const Home = () => {
         e.preventDefault();
         const form = {
             general: { name, budget, currentPhone, trustedMaker, preferredMake, usedPhones, tryAndroid }, 
-            screen: { screenSize,  screenSizeMatch, screenResolution, screenResolutionMatch, oled },
+            screen: { screenSize, screenResolution, oled },
             specs: { cpuCores, ram, storage }
         };
 
@@ -109,7 +107,7 @@ const Home = () => {
                 <div className="form-sub">
                 <h3>Screen</h3>
                     <div className="form-row">
-                        <label>Screen Size? ¹ <Tooltip tooltip="Displayed in Inches">
+                        <label>Screen Size? ¹ <Tooltip tooltip="Measured in Inches">
                             <span class="material-symbols-outlined">info</span>
                         </Tooltip></label>
                         <input
@@ -117,13 +115,6 @@ const Home = () => {
                             required
                             value={ screenSize }
                             onChange={(e) => setScreenSize(e.target.value)}
-                        />
-                    </div>
-                    <div className="form-row">
-                        <label>Screen Size Match Type? *</label>
-                        <DropdownBox 
-                            options={[{value: "minimum", title: "Minimum"}, {value: "Exact", title: "Exact"}, {value: "Maximum", title: "Maximum"}]} 
-                            value={screenSizeMatch} setValue={setScreenSizeMatch} required={true} 
                         />
                     </div>
                     <div className="form-row">
@@ -135,13 +126,6 @@ const Home = () => {
                             required
                             value={ screenResolution }
                             onChange={(e) => setScreenResolution(e.target.value)}
-                        />
-                    </div>
-                    <div className="form-row">
-                        <label>Screen Resolution Match Type? *</label>
-                        <DropdownBox 
-                            options={[{value: "minimum", title: "Minimum"}, {value: "Exact", title: "Exact"}, {value: "Maximum", title: "Maximum"}]} 
-                            value={screenResolutionMatch} setValue={setScreenResolutionMatch} required={true} 
                         />
                     </div>
                     <div className="form-row">
